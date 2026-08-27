@@ -23,4 +23,9 @@
   .identity-value,
   .result-badge strong { font-size: 24px; }
   .identity-quote { font-size: 20px; }
+  /* 窄屏下判分逻辑卡：缩一档内边距，阈值尺的段内文字放不下就藏掉，
+     刻度和指针还在，照样看得出落在哪一段 */
+  .logic-step { padding: 16px; }
+  .logic-ruler-zone { font-size: 0; }
+  .logic-ruler-zone[data-hit] { font-size: 11px; }
 }

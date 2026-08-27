@@ -9,6 +9,7 @@ import PageHeading from "./PageHeading.jsx";
 import AnimatedCardGrid from "./AnimatedCardGrid.jsx";
 import InputCard from "./InputCard.jsx";
 import ResultCard from "./ResultCard.jsx";
+import LogicCard from "./LogicCard.jsx";
 import { textLab } from "../data/site.js";
 
 export default function TextLabView() {
@@ -23,6 +24,8 @@ export default function TextLabView() {
 
       <InputCard onResult={setResult} />
       <ResultCard result={result} />
+      {/* 同一份 result 再喂给第三张卡：ResultCard 给结论，LogicCard 给过程 */}
+      <LogicCard result={result} />
     </AnimatedCardGrid>
   );
 }

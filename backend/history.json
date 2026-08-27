@@ -1,0 +1,114 @@
+[
+  {
+    "text": "今天的风很轻，适合把脑海里的想法慢慢写下来。",
+    "score": 1.0,
+    "label": "偏积极",
+    "pinyin": "jīn tiān de fēng hěn qīng ， shì hé bǎ nǎo hǎi lǐ de xiǎng fǎ màn màn xiě xià lái 。",
+    "created_at": "2026-08-26T10:27:03+00:00"
+  },
+  {
+    "text": "太难了",
+    "score": 0.28,
+    "label": "偏消极",
+    "pinyin": "tài nán le",
+    "created_at": "2026-08-26T10:27:15+00:00"
+  },
+  {
+    "text": "我的脖子要断了",
+    "score": 0.47,
+    "label": "中性",
+    "pinyin": "wǒ de bó zi yào duàn le",
+    "created_at": "2026-08-26T10:27:24+00:00"
+  },
+  {
+    "text": "今天心情不错",
+    "score": 0.86,
+    "label": "偏积极",
+    "pinyin": "jīn tiān xīn qíng bù cuò",
+    "created_at": "2026-08-27T15:20:06+00:00"
+  },
+  {
+    "text": "你是猪",
+    "score": 0.5,
+    "label": "中性",
+    "pinyin": "nǐ shì zhū",
+    "created_at": "2026-08-27T15:48:46+00:00"
+  },
+  {
+    "text": "我想死",
+    "score": 0.33,
+    "label": "偏消极",
+    "pinyin": "wǒ xiǎng sǐ",
+    "created_at": "2026-08-27T15:49:02+00:00"
+  },
+  {
+    "text": "今天天气真好",
+    "score": 0.46,
+    "label": "中性",
+    "pinyin": "jīn tiān tiān qì zhēn hǎo",
+    "created_at": "2026-08-27T15:49:42+00:00"
+  },
+  {
+    "text": "太难了",
+    "score": 0.28,
+    "label": "偏消极",
+    "pinyin": "tài nán le",
+    "created_at": "2026-08-27T15:50:23+00:00"
+  },
+  {
+    "text": "质量很好，很满意，下次还会再来",
+    "score": 0.93,
+    "label": "偏积极",
+    "pinyin": "zhì liàng hěn hǎo ， hěn mǎn yì ， xià cì hái huì zài lái",
+    "created_at": "2026-08-27T15:50:25+00:00"
+  },
+  {
+    "text": "ab今天",
+    "score": 0.5,
+    "label": "中性",
+    "pinyin": "ab jīn tiān",
+    "created_at": "2026-08-27T15:50:26+00:00"
+  },
+  {
+    "text": "质量很好，很满意，下次还会再来",
+    "score": 0.93,
+    "label": "偏积极",
+    "pinyin": "zhì liàng hěn hǎo ， hěn mǎn yì ， xià cì hái huì zài lái",
+    "created_at": "2026-08-27T15:52:53+00:00"
+  },
+  {
+    "text": "你给我去死吧",
+    "score": 0.3,
+    "label": "偏消极",
+    "pinyin": "nǐ gěi wǒ qù sǐ ba",
+    "created_at": "2026-08-27T15:54:01+00:00"
+  },
+  {
+    "text": "质量很好，很满意，下次还会再来",
+    "score": 0.93,
+    "label": "偏积极",
+    "pinyin": "zhì liàng hěn hǎo ， hěn mǎn yì ， xià cì hái huì zài lái",
+    "created_at": "2026-08-27T15:54:16+00:00"
+  },
+  {
+    "text": "我很不喜欢",
+    "score": 0.69,
+    "label": "偏积极",
+    "pinyin": "wǒ hěn bù xǐ huān",
+    "created_at": "2026-08-27T16:21:15+00:00"
+  },
+  {
+    "text": "太难了",
+    "score": 0.28,
+    "label": "偏消极",
+    "pinyin": "tài nán le",
+    "created_at": "2026-08-27T16:25:13+00:00"
+  },
+  {
+    "text": "我最近太胖了",
+    "score": 0.23,
+    "label": "偏消极",
+    "pinyin": "wǒ zuì jìn tài pàng le",
+    "created_at": "2026-08-27T16:27:24+00:00"
+  }
+]

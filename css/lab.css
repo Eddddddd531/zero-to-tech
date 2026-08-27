@@ -113,3 +113,256 @@
   font-weight: 600;
   color: var(--text-main);
 }
+
+/* ===== 判分逻辑卡片 =====
+   没有新配色：软底沿用 --surface-soft，高亮统一用上面 textarea focus ring
+   那个 rgba(0, 113, 227, 0.14)，圆角、字号都跟结果区对齐。 */
+
+.logic-empty {
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.47;
+  letter-spacing: -0.2px;
+}
+
+.logic-steps {
+  display: grid;
+  gap: 14px;
+}
+
+/* 跟 .result-item 一个观感 */
+.logic-step {
+  padding: 20px;
+  border-radius: var(--radius-soft);
+  background: var(--surface-soft);
+}
+
+/* 第 2 步跑在后端、前端看不见——虚线框 + 压暗，跟能看见的那几步区分开 */
+.logic-step[data-remote] {
+  background: transparent;
+  border: 1px dashed var(--border-soft);
+}
+
+.logic-step[data-remote] .logic-step-body { color: var(--text-muted); }
+
+.logic-step[data-remote] .logic-step-index {
+  background: var(--border-soft);
+  color: var(--text-muted);
+}
+
+.logic-step-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.37px;
+  font-weight: 600;
+}
+
+.logic-step-index {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.logic-tag {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--border-soft);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.12px;
+}
+
+.logic-step-body {
+  color: var(--text-main);
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.37px;
+  word-break: break-word;
+}
+
+.logic-step-body strong {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.logic-step-meta {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.46;
+  letter-spacing: -0.12px;
+}
+
+.logic-code-inline {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ---- 阈值尺 ---- */
+
+.logic-ruler { margin: 4px 0 16px; }
+
+.logic-ruler-track {
+  position: relative;
+  padding-top: 26px;          /* 给指针上面那颗气泡留出位置 */
+}
+
+.logic-ruler-zones {
+  display: flex;
+  height: 36px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.logic-ruler-zone {
+  display: grid;
+  place-items: center;
+  background: var(--border-soft);
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: -0.12px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.logic-ruler-zone[data-hit] {
+  background: rgba(0, 113, 227, 0.14);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.logic-ruler-pin {
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--brand);
+  transform: translateX(-50%);
+}
+
+.logic-ruler-pin em {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.logic-ruler-scale {
+  position: relative;
+  height: 16px;
+  margin-top: 8px;
+}
+
+.logic-ruler-scale span {
+  position: absolute;
+  top: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* ---- score_label() 的三条分支 ---- */
+
+.logic-code {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow-x: auto;
+}
+
+.logic-code p {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: background 0.3s, color 0.3s;
+}
+
+.logic-code p[data-hit] {
+  background: rgba(0, 113, 227, 0.14);
+  color: var(--text-main);
+}
+
+.logic-code code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  white-space: pre;
+}
+
+.logic-code p span {
+  font-size: 13px;
+  letter-spacing: -0.12px;
+}
+
+.logic-code p[data-hit] span {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* ---- 尾部两条注意事项 ---- */
+
+.logic-notes {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.logic-notes p {
+  display: flex;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: -0.12px;
+}
+
+.logic-notes p span {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  font-size: 11px;
+}
