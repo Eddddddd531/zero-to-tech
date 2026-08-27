@@ -1,11 +1,25 @@
+/* 全站的"调色盘"。颜色先在这里起个名字，别的样式文件只认名字、不认色号，
+   所以换肤只要改这一处，不用满仓库去搜 #f5f5f7。
+
+   这一节加了深色模式，用的就是这个性质：下面 [data-theme="dark"] 把同一批
+   名字重新赋一遍值。<html> 上的 data-theme 由 ThemeToggle 那个按钮来切，
+   一切换，所有引用了这些名字的地方自己就变了——没有一行 JS 去改样式。 */
+
 :root {
+  /* 顺带告诉浏览器现在是白天还是黑夜：滚动条、textarea 里的光标这些
+     原生控件不归我们的 CSS 管，靠这一行才会跟着一起变。 */
+  color-scheme: light;
+
   --page-bg: #f5f5f7;
+  --shell-top: #ffffff;      /* app-shell 顶部那抹渐变的起点 */
   --surface: #ffffff;
   --surface-soft: #fbfbfd;
   --text-main: #1d1d1f;
+  --text-strong: rgba(29, 29, 31, 0.88);
   --text-soft: rgba(29, 29, 31, 0.72);
   --text-muted: rgba(29, 29, 31, 0.56);
   --brand: #0071e3;
+  --brand-soft: rgba(0, 113, 227, 0.14);   /* 淡蓝底：focus 环、命中的那一段 */
   --border-soft: rgba(29, 29, 31, 0.08);
   --shadow: 3px 5px 30px rgba(0, 0, 0, 0.08);
   --grad: linear-gradient(294deg, #ff00f7 0%, #1e98fd 100%);
@@ -15,4 +29,28 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+/* 深色模式。只重写"颜色"那一类变量——圆角、字体、宽度跟白天黑夜无关，
+   不用抄第二遍（少抄一遍，就少一处将来改了这边忘了改那边）。
+
+   注意这里不是把浅色简单取反，有三处是特意拧过的：
+   - 蓝色提亮到 #0a84ff。#0071e3 在近黑底上会发闷，链接看着像失效了；
+   - 描边和淡蓝底都加重一档（0.08 → 0.14）。深色下弱对比会直接糊成一片；
+   - 阴影加深到 0.55。浅色的卡片靠影子"浮"起来，深色下影子太淡就没了层次。 */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page-bg: #000000;
+  --shell-top: #1c1c1e;
+  --surface: #1c1c1e;
+  --surface-soft: #232325;
+  --text-main: #f5f5f7;
+  --text-strong: rgba(245, 245, 247, 0.88);
+  --text-soft: rgba(245, 245, 247, 0.72);
+  --text-muted: rgba(245, 245, 247, 0.56);
+  --brand: #0a84ff;
+  --brand-soft: rgba(10, 132, 255, 0.24);
+  --border-soft: rgba(245, 245, 247, 0.14);
+  --shadow: 3px 5px 30px rgba(0, 0, 0, 0.55);
 }

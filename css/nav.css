@@ -9,7 +9,7 @@
 }
 
 .nav-link {
-  color: rgba(29, 29, 31, 0.54);
+  color: var(--text-muted);
   font-size: 15px;
   line-height: 1.33;
   letter-spacing: -0.24px;
@@ -20,4 +20,77 @@
 .nav-link.active {
   color: var(--text-main);
   font-weight: 500;
+}
+
+/* 顶栏右半边：导航链接 + 主题开关。
+   包一层是为了不打乱 .hero-topline 的 space-between——那边只认两个孩子
+   （左边品牌、右边这一坨），直接把按钮塞进去会变成三等分。 */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ===== 白天 / 夜晚开关 =====
+   一条 60×32 的胶囊，里面躺着一个滑块和两个图标。
+   图标在滑块上面一层（z-index），所以"当前那个"正好被蓝色滑块托着。 */
+
+.theme-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  flex: none;
+  width: 60px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: var(--surface-soft);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.theme-toggle:hover { border-color: var(--brand); }
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+.theme-toggle-knob {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: 26px;
+  border-radius: 999px;
+  background: var(--brand);
+  /* 滑过去的那 0.28s：cubic-bezier 让它起步快、落位稳 */
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .theme-toggle-knob {
+  transform: translateX(28px);
+}
+
+.theme-toggle-icon {
+  position: relative;      /* 抬到滑块上面 */
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  color: var(--text-muted);
+  transition: color 0.28s;
+}
+
+/* 被滑块托住的那个图标转成白色，另一个留在 --text-muted */
+.theme-toggle-sun { color: #ffffff; }
+
+[data-theme="dark"] .theme-toggle-sun { color: var(--text-muted); }
+[data-theme="dark"] .theme-toggle-moon { color: #ffffff; }
+
+/* 用键盘 Tab 过来、或者切换的一瞬间，别让滑块动画在"减少动效"的设备上晃 */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-knob,
+  .theme-toggle-icon { transition: none; }
 }

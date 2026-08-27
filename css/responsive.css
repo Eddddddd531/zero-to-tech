@@ -14,6 +14,9 @@
     gap: 10px;
     margin-bottom: 18px;
   }
+  /* 窄屏下顶栏折成两行，导航和主题开关一起掉到第二行：
+     撑满一整行、两头顶开，开关就还是贴在右边 */
+  .hero-actions { width: 100%; justify-content: space-between; }
   .hero-display { font-size: 48px; }
   .hero-subtitle { margin-top: 14px; font-size: 18px; }
   .brand-eyebrow { font-size: 18px; }

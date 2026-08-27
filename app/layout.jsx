@@ -20,10 +20,32 @@ export const metadata = {
   description: "个人主页 + 文字实验室",
 };
 
+// 开灯脚本。它必须在页面画出第一帧之前跑完，所以是一段"塞进 HTML 里的字符串"，
+// 而不是一个正经的 React 组件——组件要等 React 挂载，那会儿白底早就闪过去了。
+//
+// 干的事：先问 localStorage 上次选了啥；没存过就问系统（macOS 的深色模式），
+// 然后把结果写到 <html data-theme> 上。CSS 一看见这个属性就换色。
+// 两条路都明确写上 light / dark，别留空——ThemeToggle 取反时要读它。
+const themeBootstrap = `
+(function () {
+  try {
+    var saved = localStorage.getItem("theme");
+    var dark = saved
+      ? saved === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-CN">
+    // suppressHydrationWarning：上面那段脚本会在 React 接手之前偷偷改 <html>
+    // 的属性，React 一对比"服务端产出的 HTML"和"现在浏览器里的样子"就会报不一致。
+    // 这一处不一致是我们故意的，跟 React 打个招呼让它别喊。
+    <html lang="zh-CN" suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <div className="app-shell">
           <div className="page-shell">
             <main className="page-content">{children}</main>

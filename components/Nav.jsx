@@ -8,6 +8,7 @@
 // 因为用到了 usePathname、要在浏览器里跑，所以顶上标了 "use client"。
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -19,21 +20,26 @@ export default function Nav() {
   return (
     <div className="hero-topline">
       <p className="brand-eyebrow">zero to tech</p>
-      <nav className="inline-links hero-nav">
-        {items.map((it) => {
-          const active =
-            it.href === "/" ? pathname === "/" : pathname.startsWith(it.href);
-          return (
-            <Link
-              key={it.href}
-              href={it.href}
-              className={"nav-link" + (active ? " active" : "")}
-            >
-              {it.label}
-            </Link>
-          );
-        })}
-      </nav>
+      {/* 右半边包一层 .hero-actions：导航链接和主题开关一起靠右站着。
+          Nav 两个页面都在用，开关放这儿，两页就都有了，不用各写一份。 */}
+      <div className="hero-actions">
+        <nav className="inline-links hero-nav">
+          {items.map((it) => {
+            const active =
+              it.href === "/" ? pathname === "/" : pathname.startsWith(it.href);
+            return (
+              <Link
+                key={it.href}
+                href={it.href}
+                className={"nav-link" + (active ? " active" : "")}
+              >
+                {it.label}
+              </Link>
+            );
+          })}
+        </nav>
+        <ThemeToggle />
+      </div>
     </div>
   );
 }

@@ -5,9 +5,13 @@ body {
   background: var(--page-bg);
 }
 
+/* 顶部那抹从白到灰的渐变，深色下变成从 #1c1c1e 到黑——两个端点都换成了变量。
+   切主题时这里是"啪"地一下换掉，不是渐变过去的：CSS 的 transition 补不了
+   两个渐变之间的中间态。与其让底色慢慢淡、卡片瞬间黑，不如全都一起换，
+   整页在同一帧完成，反而干净。 */
 .app-shell {
   min-height: 100vh;
-  background: linear-gradient(180deg, #ffffff 0%, var(--page-bg) 28%, var(--page-bg) 100%);
+  background: linear-gradient(180deg, var(--shell-top) 0%, var(--page-bg) 28%, var(--page-bg) 100%);
 }
 
 .page-shell {

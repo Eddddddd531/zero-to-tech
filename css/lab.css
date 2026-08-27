@@ -40,7 +40,7 @@
 
 .lab-form textarea:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.14);
+  box-shadow: 0 0 0 2px var(--brand-soft);
 }
 
 .lab-form textarea::placeholder {
@@ -116,7 +116,7 @@
 
 /* ===== 判分逻辑卡片 =====
    没有新配色：软底沿用 --surface-soft，高亮统一用上面 textarea focus ring
-   那个 rgba(0, 113, 227, 0.14)，圆角、字号都跟结果区对齐。 */
+   那个 --brand-soft，圆角、字号都跟结果区对齐。 */
 
 .logic-empty {
   margin-bottom: 18px;
@@ -248,7 +248,7 @@
 }
 
 .logic-ruler-zone[data-hit] {
-  background: rgba(0, 113, 227, 0.14);
+  background: var(--brand-soft);
   color: var(--brand);
   font-weight: 600;
 }
@@ -316,7 +316,7 @@
 }
 
 .logic-code p[data-hit] {
-  background: rgba(0, 113, 227, 0.14);
+  background: var(--brand-soft);
   color: var(--text-main);
 }
 
